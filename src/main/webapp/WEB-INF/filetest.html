@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>測試</title>
+</head>
+<body>
+	<h1>測試上傳</h1>
+	<input type="file" multiple>
+	<button>上傳</button>
+</body>
+
+<script>
+const input = document.querySelector('input');
+const button = document.querySelector('button');
+// console.log(input);
+// console.log(button);
+console.log("觸發上傳按鈕");
+
+button.addEventListener('click', () => {
+	console.log("觸發上傳按鈕");
+	const formData = new FormData();
+	for (let file of input.files) {
+		formData.append('images', file, file.name);
+	} 
+
+// 	console.log(formData);
+
+	fetch('test/t3', {
+		method: 'POST',
+		body: formData
+	});
+
+});
+
+
+</script>
+
+</html>
